@@ -1,18 +1,25 @@
 import { Response, Request } from "express";
+import { DriveService } from "../libs/drive.service";
 
 class GoogleDriveController {
   async redirectUrl(req: Request, res: Response) {
+    const token = await new DriveService().getTokenByAuthCode(
+      String(req.query.code)
+    );
     res.status(200).send({
       status: "ok",
-      message: "redirect",
+      token,
     });
   }
 
   async integrate(req: Request, res: Response) {
-    res.status(200).send({
-      status: "ok",
-      message: "integrate",
-    });
+    res.redirect(new DriveService().authURL());
+  }
+
+  async getFiles(req: Request, res: Response) {
+    const { token } = req.body;
+    const response = await new DriveService().getDriveFiles(token);
+    res.status(200).send(response);
   }
 }
 
