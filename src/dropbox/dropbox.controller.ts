@@ -3,7 +3,9 @@ import { DropBoxService } from "../libs/dropbox.service";
 
 class DropBoxController {
   async redirectUrl(req: Request, res: Response) {
-    const token = await new DropBoxService().getToken(String(req.query.code));
+    const token = await new DropBoxService().getTokenByAuthCode(
+      String(req.query.code)
+    );
     res.status(200).send({
       status: "ok",
       token,
