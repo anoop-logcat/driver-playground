@@ -11,7 +11,8 @@ app.use(helmet());
 app.use(cors());
 app.use(urlencoded({ extended: true }));
 app.use(json());
-app.use("/", AppRouter);
+
+app.use(AppRouter);
 
 app.listen(process.env.PORT, () => {
   console.log("Server is running at " + process.env.PORT);

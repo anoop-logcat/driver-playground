@@ -1,4 +1,4 @@
-# express-starter
+# driver-playground
 
 A simple typescript express application for saving your time on new express project.
 
