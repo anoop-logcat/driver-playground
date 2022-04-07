@@ -3,8 +3,8 @@ import { GoogleDriveController } from "./google.controller";
 
 const GoogleDriveRouter = Router();
 
-GoogleDriveRouter.get("/redirect", new GoogleDriveController().redirectUrl);
 GoogleDriveRouter.get("/integrate", new GoogleDriveController().integrate);
+GoogleDriveRouter.get("/logout", new GoogleDriveController().logout);
 GoogleDriveRouter.get("/files", new GoogleDriveController().getFiles);
 
 export { GoogleDriveRouter };

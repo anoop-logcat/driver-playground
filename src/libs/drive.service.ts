@@ -15,6 +15,12 @@ class DriveService {
     return (await client.getToken(code)).tokens;
   }
 
+  async logOut() {
+    await this.getAuthClient().revokeToken(
+      "1//0gM3WMrAKNL3bCgYIARAAGBASNwF-L9IrAtW9ahxPMrPfpdTGfxDtMuNZ0vSCpCmHVJ2JCcc6-qepqZqz9mE29-cyLcxhCVffKC0"
+    );
+  }
+
   authURL() {
     const client = this.getAuthClient();
     return client.generateAuthUrl({

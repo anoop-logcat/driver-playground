@@ -12,6 +12,13 @@ class GoogleDriveController {
     });
   }
 
+  async logout(req: Request, res: Response) {
+    await new DriveService().logOut();
+    res.status(200).send({
+      message: "Logged Out Successfully",
+    });
+  }
+
   async integrate(req: Request, res: Response) {
     res.redirect(new DriveService().authURL());
   }
